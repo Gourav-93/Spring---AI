@@ -2,10 +2,11 @@ package com.backend.aii.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import com.backend.aii.Model.QuestionModel;
 import com.backend.aii.Service.GeminiService;
 
 @RestController
@@ -15,9 +16,9 @@ public class AiController {
     @Autowired
     GeminiService geminiService;
 
-    @GetMapping("/api/gemini")
-    public String ask() {
-        return geminiService.askGemini("How Are You?");
+    @PostMapping("/api/gemini")
+    public String ask(@RequestBody QuestionModel user_question) {
+        return geminiService.askGemini(user_question.getQuestion());
     }
 
 }
