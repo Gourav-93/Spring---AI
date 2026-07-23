@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini AI</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons for modern UI icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Mobile Sidebar Overlay -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+        
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="ph ph-sparkle-fill"></i>
+                    <span>Gemini AI</span>
+                </div>
+                <button class="close-sidebar-btn" id="closeSidebarBtn">
+                    <i class="ph ph-x"></i>
+                </button>
+            </div>
+            
+            <button class="new-chat-btn" id="newChatBtnSidebar">
+                <i class="ph ph-plus"></i>
+                <span>New Chat</span>
+            </button>
+            
+            <div class="chat-history">
+                <h3 class="section-title">Recent</h3>
+                <div class="history-list">
+                    <!-- History items could go here in future -->
+                    <div class="history-item active">
+                        <i class="ph ph-chat-circle"></i>
+                        <span>Current Conversation</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-footer">
+                <button class="sidebar-action">
+                    <i class="ph ph-gear"></i>
+                    <span>Settings</span>
+                </button>
+                <button class="sidebar-action">
+                    <i class="ph ph-info"></i>
+                    <span>About</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="chat-header">
+                <div class="header-left">
+                    <button class="menu-btn" id="menuBtn">
+                        <i class="ph ph-list"></i>
+                    </button>
+                    <div class="header-title">
+                        <h2>Gemini AI</h2>
+                        <div class="status">
+                            <span class="status-dot"></span>
+                            <span class="status-text">Online</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <button class="icon-btn" id="clearChatBtn" title="Clear Chat">
+                        <i class="ph ph-trash"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Chat Area -->
+            <div class="chat-container" id="chatContainer">
+                <!-- Welcome Screen -->
+                <div class="welcome-screen" id="welcomeScreen">
+                    <div class="welcome-icon">
+                        <i class="ph ph-sparkle-fill"></i>
+                    </div>
+                    <h1>How can I help you today?</h1>
+                    <p>I'm your AI assistant, ready to answer questions and help with coding.</p>
+                    
+                    <div class="suggestion-grid">
+                        <div class="suggestion-card" onclick="insertSuggestion('Explain Java to me')">
+                            <div class="card-icon"><i class="ph ph-code"></i></div>
+                            <h3>Explain Java</h3>
+                            <p>Get a quick overview of Java</p>
+                        </div>
+                        <div class="suggestion-card" onclick="insertSuggestion('Help me learn Spring Boot')">
+                            <div class="card-icon"><i class="ph ph-leaf"></i></div>
+                            <h3>Spring Boot</h3>
+                            <p>Learn the basics of Spring Boot</p>
+                        </div>
+                        <div class="suggestion-card" onclick="insertSuggestion('Write a Java program to sort an array')">
+                            <div class="card-icon"><i class="ph ph-terminal"></i></div>
+                            <h3>Write Code</h3>
+                            <p>Generate a Java program</p>
+                        </div>
+                        <div class="suggestion-card" onclick="insertSuggestion('Explain the concept of OOP')">
+                            <div class="card-icon"><i class="ph ph-lightbulb"></i></div>
+                            <h3>Explain concept</h3>
+                            <p>Understand OOP principles</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Messages will be injected here -->
+                <div class="messages-wrapper" id="messagesWrapper"></div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-area">
+                <div class="input-container">
+                    <button class="attachment-btn" title="Attach file (Visual only)">
+                        <i class="ph ph-paperclip"></i>
+                    </button>
+                    <textarea 
+                        id="messageInput" 
+                        placeholder="Message Gemini AI..." 
+                        rows="1"
+                    ></textarea>
+                    <button class="send-btn" id="sendBtn" disabled>
+                        <i class="ph ph-paper-plane-right"></i>
+                    </button>
+                </div>
+                <div class="input-footer">
+                    <span>Press <kbd>Enter</kbd> to send, <kbd>Shift</kbd> + <kbd>Enter</kbd> for new line.</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
